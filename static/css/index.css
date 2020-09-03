@@ -1,0 +1,16 @@
+#companio, #care {
+    font-size: 34px;
+    font-family: ktcg;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1px;
+}
+#companio {
+    color: #5d6cd0;
+}
+#care {
+    color: #ffc65b; 
+}
+form {
+    width: 33%
+}
