@@ -59,7 +59,7 @@ class Server(bottle.Bottle):
         email = bottle.request.forms.get('email')
 
         # if any input is null
-        if (not first.strip()) or (not last.strip()) or (not email.strip()):
+        if (first.strip() is None) or (last.strip() is None) or (email.strip() is None):
             return self.send_login("Input cannot be empty!", first, last, email)
 
         # if email is improperly formatted
@@ -67,7 +67,7 @@ class Server(bottle.Bottle):
             return self.send_login("Improperly formatted email address!", first, last, email)
         
         # if user already exists
-        if self.db.query("SELECT * FROM users WHERE first = ? AND last = ? AND email = ?", first, last, email):
+        if self.db.query("SELECT * FROM users WHERE email = ?", email):
             return self.send_login("User already exists!", first, last, email)
         
         # if all checks have passed, add them to the database
